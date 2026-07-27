@@ -452,12 +452,21 @@ h1,h2,h3,.display{
   letter-spacing: 2px;
 }
 
-/* Destacar Pelea Estelar en la Cartelera */
-.card-fight:has(.pill--gold) {
-  background: linear-gradient(90deg, rgba(201,162,39,0.08) 0%, rgba(27,27,27,1) 50%, rgba(201,162,39,0.08) 100%);
-  border: 1px solid rgba(201,162,39,0.4);
-  margin-bottom: 15px;
+/* ===== PELEA ESTELAR DESTACADA CON ESPACIADO CORREGIDO ===== */
+.card-fight:has(.pill--gold),
+.card-fight--title {
+  background: linear-gradient(90deg, rgba(201, 162, 39, 0.08) 0%, var(--bg-card) 50%, rgba(201, 162, 39, 0.08) 100%);
+  border: 1px solid rgba(201, 162, 39, 0.4);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  
+  /* Agregamos espaciado interno arriba/abajo (24px) y A LOS LADOS (24px) */
+  padding: 24px 24px; 
+  
+  /* Esquinas ligeramente redondeadas para un acabado elegante */
+  border-radius: 6px; 
+  
+  /* Margen inferior para que no quede pegada a la pelea Co-Estelar */
+  margin-bottom: 16px; 
 }
 
 /* ===== ENLACE MAPA HERO ===== */
@@ -837,5 +846,33 @@ h1,h2,h3,.display{
   }
   .footer {
     padding-bottom: 90px;
+  }
+}
+
+/* ===== ESTILOS DEL CINTURÓN EN LA PELEA ESTELAR ===== */
+.card-fight__belt {
+  margin: 6px auto 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-fight__belt img {
+  width: 240px;               /* Ajusta el tamaño del cinturón */
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
+  transition: transform 0.3s ease;
+}
+
+/* Efecto al pasar el cursor */
+.card-fight:hover .card-fight__belt img {
+  transform: scale(1.08);
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 720px) {
+  .card-fight__belt img {
+    width: 200px;
   }
 }

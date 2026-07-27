@@ -60,7 +60,7 @@
             <div class="label">Sede</div>
             <div class="value value--sede">
               <span>Hotel Santorian</span>
-              <a href="https://maps.google.com/?q=Hotel+Santorian+Hermosillo" target="_blank" rel="noopener" class="hero__map-btn">
+              <a href="https://maps.google.com/?q=Hotel+Santorian+Hermosillo" target="_blank" rel="noopener noreferrer" class="hero__map-btn">
                 📍 Cómo llegar
               </a>
             </div>
@@ -142,14 +142,11 @@
       </div>
 
       <form class="form" id="fighterForm" action="https://formsubmit.co/admisiones@pxm.com" method="POST">
-        <!-- Asunto personalizado que llegará a tu correo -->
-          <input type="hidden" name="_subject" value="🥊 Nueva Solicitud de Peleador - PXM">
+        <!-- Configuración FormSubmit -->
+        <input type="hidden" name="_subject" value="🥊 Nueva Solicitud de Peleador - PXM">
+        <input type="hidden" name="_next" value="https://tu-sitio-web.com/index.html#convocatoria">
+        <input type="hidden" name="_captcha" value="false">
 
-          <!-- Evita la redirección a la página de FormSubmit y mantiene al usuario en tu web -->
-          <input type="hidden" name="_next" value="https://tu-sitio-web.com/index.html#convocatoria">
-
-          <!-- Desactiva el CAPTCHA para mayor rapidez -->
-          <input type="hidden" name="_captcha" value="false">
         <div class="form-row">
           <div class="field">
             <label for="f-nombre">Nombre completo</label>
@@ -253,20 +250,20 @@
           </ul>
         </div>
       </div>
-<div class="footer__bottom">
-  <div>
-    <span id="year"></span>
-    <span>Peleas Extremmas (PXM) — Todos los derechos reservados.</span>
-  </div>
+      <div class="footer__bottom">
+        <div>
+          <span id="year"></span>
+          <span>Peleas Extremmas (PXM) — Todos los derechos reservados.</span>
+        </div>
 
-  <!-- Firma de MA Designs -->
-  <div class="developer-credit">
-    <span>Sitio web desarrollado por</span>
-    <a href="#" target="_blank" rel="noopener" class="developer-credit__link">
-      <img src="img/madesigns-logo.png" alt="MA Designs" class="developer-credit__logo">
-    </a>
-  </div>
-</div>
+        <!-- Firma de MA Designs -->
+        <div class="developer-credit">
+          <span>Sitio web desarrollado por</span>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="developer-credit__link">
+            <img src="img/madesigns-logo.png" alt="MA Designs" class="developer-credit__logo">
+          </a>
+        </div>
+      </div>
     </div>
   </footer>
 
@@ -318,70 +315,69 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-// Función helper para generar el HTML de las banderas en imagen
-function flagHTML(codigo) {
-  if (!codigo) return '';
-  // Utiliza el código ISO de 2 letras en minúsculas (ej. 'mx', 've')
-  return `<img src="https://flagcdn.com/24x18/${codigo.toLowerCase()}.png" alt="${codigo}" class="flag-icon" loading="lazy">`;
-}
+  // Helper para Banderas PNG
+  function flagHTML(codigo) {
+    if (!codigo) return '';
+    return `<img src="https://flagcdn.com/24x18/${codigo.toLowerCase()}.png" alt="${codigo}" class="flag-icon" loading="lazy">`;
+  }
 
-// Cartelera con códigos de banderas ('mx', 've', etc.)
-const cartelera = [
-  // --- CARTELERA PRINCIPAL ---
-  {type:'main', main:true, title:true, a:'Bryan "El Zurdo" Martinez', flagA:'mx', recordA:'10-5-0', fotoA:'img/bryanmartinez.jpg', b:'Juan "The Pony" Campos', flagB:'ve', recordB:'10-19-0', fotoB:'img/juancampos.jpg', division:'PELEA POR CINTURON DE LAS 135LB - MMA PROFESIONAL'},
-  {type:'main', coMain:true, a:'Hector "El Ashura" Icedo', flagA:'mx', recordA:'6-2-0', fotoA:'img/hector.jpg', b:'Jorge "El Halcon" Olea', flagB:'mx', recordB:'4-6-0', fotoB:'img/jorge.jpg', division:'MMA PROFESIONAL- PESO PACTADO 162.8LB/74KGS'},
-  {type:'main', a:'Jorge Montes', flagA:'mx', recordA:'1-1-0', fotoA:'img/jorgemontes.jpg', b:'Luis Avila', flagB:'mx', recordB:'DEBUT', fotoB:'img/luisavila.jpg', division:'MMA PROFESIONAL - PESO PACTADO 140LB/63.63KGS'},
-  {type:'main', a:'Omar "El Diablo" Olguin', flagA:'mx', recordA:'2-2-0', fotoA:'img/omarolguin.jpg', b:'Ricardo "Black Tiger" Rueda', flagB:'mx', recordB:'1-3-0', fotoB:'img/ricardorueda.jpg', division:'MMA PROFESIONAL - PESO PACTADO 176LB/80KGS'},
-  {type:'main', a:'Luis Caleb Arzac', flagA:'mx', recordA:'DEBUT', fotoA:'img/luiscalebarzac.jpg', b:'Abel "El Tiburon" Pinela', flagB:'mx', recordB:'0-1-0', fotoB:'img/abelpinela.jpg', division:'MMA PROFESIONAL - 155LB/70KGS'},
-  {type:'main', a:'Manuel "El Puma" Caballero', flagA:'mx', recordA:'DEBUT', fotoA:'img/manuelcaballero.jpg', b:'Sammy Ortiz', flagB:'us', recordB:'1-0-0', fotoB:'img/sammyortiz.jpg', division:'MMA PROFESIONAL -125LB/56.81KGS'},
+  // Cartelera
+  const cartelera = [
+    // --- CARTELERA PRINCIPAL ---
+    {type:'main', main:true, title:true, a:'Bryan "El Zurdo" Martinez', flagA:'mx', recordA:'10-5-0', fotoA:'img/bryanmartinez.jpg', b:'Juan "The Pony" Campos', flagB:'ve', recordB:'10-19-0', fotoB:'img/juancampos.jpg', division:'PELEA POR CINTURON DE LAS 135LB - MMA PROFESIONAL'},
+    {type:'main', coMain:true, a:'Hector "El Ashura" Icedo', flagA:'mx', recordA:'6-2-0', fotoA:'img/hector.jpg', b:'Jorge "El Halcon" Olea', flagB:'mx', recordB:'4-6-0', fotoB:'img/jorge.jpg', division:'MMA PROFESIONAL- PESO PACTADO 162.8LB/74KGS'},
+    {type:'main', a:'Jorge Montes', flagA:'mx', recordA:'1-1-0', fotoA:'img/jorgemontes.jpg', b:'Luis Avila', flagB:'mx', recordB:'DEBUT', fotoB:'img/luisavila.jpg', division:'MMA PROFESIONAL - PESO PACTADO 140LB/63.63KGS'},
+    {type:'main', a:'Omar "El Diablo" Olguin', flagA:'mx', recordA:'2-2-0', fotoA:'img/omarolguin.jpg', b:'Ricardo "Black Tiger" Rueda', flagB:'mx', recordB:'1-3-0', fotoB:'img/ricardorueda.jpg', division:'MMA PROFESIONAL - PESO PACTADO 176LB/80KGS'},
+    {type:'main', a:'Luis Caleb Arzac', flagA:'mx', recordA:'DEBUT', fotoA:'img/luiscalebarzac.jpg', b:'Abel "El Tiburon" Pinela', flagB:'mx', recordB:'0-1-0', fotoB:'img/abelpinela.jpg', division:'MMA PROFESIONAL - 155LB/70KGS'},
+    {type:'main', a:'Manuel "El Puma" Caballero', flagA:'mx', recordA:'DEBUT', fotoA:'img/manuelcaballero.jpg', b:'Sammy Ortiz', flagB:'us', recordB:'1-0-0', fotoB:'img/sammyortiz.jpg', division:'MMA PROFESIONAL -125LB/56.81KGS'},
 
-  // --- PRELIMINARES ---
-  {type:'prelim', main:true, title:true, a:'Luis "Big Luis" Cruz', flagA:'mx', recordA:'3-0-0', fotoA:'img/luiscruz.jpg', b:'Jesus "Ruso" Arias', flagB:'mx', recordB:'1-1-0', fotoB:'img/jesusarias.jpg', division:'ESTELAR - MMA AMATEUR 1ERA FUERZA - 286LB/130KG'},
-  {type:'prelim', coMain:true, a:'Jose Pablo Garcia', flagA:'mx', recordA:'2-2-0', fotoA:'img/josegarcia.jpg', b:'Jose Dominguez', flagB:'mx', recordB:'2-1-0', fotoB:'img/josedominguez.jpg', division:'COESTELAR - MMA AMATEUR 1ERA FUERZA - 185LB/84KG'},
-  {type:'prelim', a:'Angel "El Panda" Quijada', flagA:'mx', recordA:'1-1-0', fotoA:'img/angelquijada.jpg', b:'Carlos "La Bala" Magallon', flagB:'mx', recordB:'DEBUT', fotoB:'img/carlosmagallon.jpg', division:'MMA AMATEUR 1ERA FUERZA - 253LB/115KG'},
-  {type:'prelim', a:'Cris "Lee" Ochoa', flagA:'mx', recordA:'1-2-0', fotoA:'img/crisochoa.jpg', b:'Bryan "El Águila" Hernandez', flagB:'mx', recordB:'1-0-0', fotoB:'img/bryanhernandez.jpg', division:'MMA AMATEUR 1ERA FUERZA - 125LB/56.81KGS'},
-  {type:'prelim', a:'Oscar "El Canguro" Chaidez', flagA:'mx', recordA:'0-1-0', fotoA:'img/oscarchaidez.jpg', b:'Kevin Bustamante', flagB:'mx', recordB:'0-1-0', fotoB:'img/kevinbustamante.jpg', division:'MMA AMATEUR 1ERA FUERZA - 145LB/65.90KGS'},
-  {type:'prelim', a:'Erick Tanori', flagA:'mx', recordA:'1-0-0', fotoA:'img/ericktanori.jpg', b:'Nico Rosenthal', flagB:'us', recordB:'1-1-0', fotoB:'img/nicorosenthal.jpg', division:'MMA AMATEUR 1ERA FUERZA - 125LB/56.81KGS'},
-  {type:'prelim', a:'Fernando Quintero', flagA:'mx', recordA:'1-0-0', fotoA:'img/fernandoquintero.jpg', b:'Gael "El Happy" Rendón', flagB:'mx', recordB:'DEBUT', fotoB:'img/gaelrendon.jpg', division:'MMA AMATEUR 1ERA FUERZA - 155LB/70KGS'},
-  {type:'prelim', a:'Axel Martinez', flagA:'mx', recordA:'1-2-0', fotoA:'img/axelmartinez.jpg', b:'Joel Palacio', flagB:'mx', recordB:'0-1-0', fotoB:'img/joelpalacio.jpg', division:'MMA AMATEUR 1ERA FUERZA - 145LB/65.90KGS'},
-  {type:'prelim', a:'Kevin Cordova', flagA:'mx', recordA:'DEBUT', fotoA:'img/kevincordova.jpg', b:'Oscar Zavala', flagB:'mx', recordB:'DEBUT', fotoB:'img/oscarzavala.jpg', division:'MMA AMATEUR 1ERA FUERZA - 170LB/77.27KGS'}
-];
+    // --- PRELIMINARES ---
+    {type:'prelim', main:true, a:'Luis "Big Luis" Cruz', flagA:'mx', recordA:'3-0-0', fotoA:'img/luiscruz.jpg', b:'Jesus "Ruso" Arias', flagB:'mx', recordB:'1-1-0', fotoB:'img/jesusarias.jpg', division:'ESTELAR - MMA AMATEUR 1ERA FUERZA - 286LB/130KG'},
+    {type:'prelim', coMain:true, a:'Jose Pablo Garcia', flagA:'mx', recordA:'2-2-0', fotoA:'img/josegarcia.jpg', b:'Jose Dominguez', flagB:'mx', recordB:'2-1-0', fotoB:'img/josedominguez.jpg', division:'COESTELAR - MMA AMATEUR 1ERA FUERZA - 185LB/84KG'},
+    {type:'prelim', a:'Angel "El Panda" Quijada', flagA:'mx', recordA:'1-1-0', fotoA:'img/angelquijada.jpg', b:'Carlos "La Bala" Magallon', flagA:'mx', recordB:'DEBUT', fotoB:'img/carlosmagallon.jpg', division:'MMA AMATEUR 1ERA FUERZA - 253LB/115KG'},
+    {type:'prelim', a:'Cris "Lee" Ochoa', flagA:'mx', recordA:'1-2-0', fotoA:'img/crisochoa.jpg', b:'Bryan "El Águila" Hernandez', flagB:'mx', recordB:'1-0-0', fotoB:'img/bryanhernandez.jpg', division:'MMA AMATEUR 1ERA FUERZA - 125LB/56.81KGS'},
+    {type:'prelim', a:'Oscar "El Canguro" Chaidez', flagA:'mx', recordA:'0-1-0', fotoA:'img/oscarchaidez.jpg', b:'Kevin Bustamante', flagB:'mx', recordB:'0-1-0', fotoB:'img/kevinbustamante.jpg', division:'MMA AMATEUR 1ERA FUERZA - 145LB/65.90KGS'},
+    {type:'prelim', a:'Erick Tanori', flagA:'mx', recordA:'1-0-0', fotoA:'img/ericktanori.jpg', b:'Nico Rosenthal', flagB:'us', recordB:'1-1-0', fotoB:'img/nicorosenthal.jpg', division:'MMA AMATEUR 1ERA FUERZA - 125LB/56.81KGS'},
+    {type:'prelim', a:'Fernando Quintero', flagA:'mx', recordA:'1-0-0', fotoA:'img/fernandoquintero.jpg', b:'Gael "El Happy" Rendón', flagB:'mx', recordB:'DEBUT', fotoB:'img/gaelrendon.jpg', division:'MMA AMATEUR 1ERA FUERZA - 155LB/70KGS'},
+    {type:'prelim', a:'Axel Martinez', flagA:'mx', recordA:'1-2-0', fotoA:'img/axelmartinez.jpg', b:'Joel Palacio', flagB:'mx', recordB:'0-1-0', fotoB:'img/joelpalacio.jpg', division:'MMA AMATEUR 1ERA FUERZA - 145LB/65.90KGS'},
+    {type:'prelim', a:'Kevin Cordova', flagA:'mx', recordA:'DEBUT', fotoA:'img/kevincordova.jpg', b:'Oscar Zavala', flagB:'mx', recordB:'DEBUT', fotoB:'img/oscarzavala.jpg', division:'MMA AMATEUR 1ERA FUERZA - 170LB/77.27KGS'}
+  ];
 
-// Función para generar la tarjeta HTML de cada pelea con la nueva función flagHTML()
-function renderFightCard(f) {
-  return `
-    <div class="card-fight">
-      <div class="card-fight__side">
-        <div class="fighter-avatar">${avatarHTML(f.fotoA, f.a)}</div>
-        <div>
-          <div class="card-fight__name">${flagHTML(f.flagA)} ${f.a}</div>
-          <div class="card-fight__record">${f.recordA || ''}</div>
+  // Generador de Tarjeta con Cinturón
+  function renderFightCard(f) {
+    return `
+      <div class="card-fight ${f.title ? 'card-fight--title' : ''}">
+        <div class="card-fight__side">
+          <div class="fighter-avatar">${avatarHTML(f.fotoA, f.a)}</div>
+          <div>
+            <div class="card-fight__name">${flagHTML(f.flagA)} ${f.a}</div>
+            <div class="card-fight__record">${f.recordA || ''}</div>
+          </div>
+        </div>
+        <div class="card-fight__mid">
+          ${f.title ? '<span class="pill pill--gold"><span>Pelea Estelar</span></span>' : (f.main ? '<span class="pill"><span>Estelar</span></span>' : (f.coMain ? '<span class="pill"><span>Co-Estelar</span></span>' : ''))}
+          ${f.title ? '<div class="card-fight__belt"><img src="img/CINTURON.png" alt="Cinturón PXM" loading="lazy"></div>' : ''}
+          <div class="card-fight__vs">VS</div>
+          <div class="card-fight__division">${f.division}</div>
+        </div>
+        <div class="card-fight__side card-fight__side--right">
+          <div class="fighter-avatar">${avatarHTML(f.fotoB, f.b)}</div>
+          <div>
+            <div class="card-fight__name">${f.b} ${flagHTML(f.flagB)}</div>
+            <div class="card-fight__record">${f.recordB || ''}</div>
+          </div>
         </div>
       </div>
-      <div class="card-fight__mid">
-        ${f.title ? '<span class="pill pill--gold"><span>Pelea Estelar</span></span>' : (f.main ? '<span class="pill"><span>Estelar</span></span>' : (f.coMain ? '<span class="pill"><span>Co-Estelar</span></span>' : ''))}
-        <div class="card-fight__vs">VS</div>
-        <div class="card-fight__division">${f.division}</div>
-      </div>
-      <div class="card-fight__side card-fight__side--right">
-        <div class="fighter-avatar">${avatarHTML(f.fotoB, f.b)}</div>
-        <div>
-          <div class="card-fight__name">${f.b} ${flagHTML(f.flagB)}</div>
-          <div class="card-fight__record">${f.recordB || ''}</div>
-        </div>
-      </div>
-    </div>
-  `;
-}
+    `;
+  }
 
-  // Separación e inyección en el contenedor
+  // Renderizar carteleras
   const cardList = document.getElementById('cardList');
   if (cardList) {
     const mainFights = cartelera.filter(f => f.type === 'main').map(renderFightCard).join('');
     const prelimFights = cartelera.filter(f => f.type === 'prelim').map(renderFightCard).join('');
 
     cardList.innerHTML = `
-      <!-- Bloque Cartelera Principal -->
       <div class="card-section">
         <div class="card-section__header">
           <span class="eyebrow">Evento Estelar</span>
@@ -390,7 +386,6 @@ function renderFightCard(f) {
         <div class="card-section__list">${mainFights}</div>
       </div>
 
-      <!-- Bloque Preliminares -->
       <div class="card-section" style="margin-top: 50px;">
         <div class="card-section__header">
           <span class="eyebrow">Peleas Iniciales</span>
@@ -401,7 +396,7 @@ function renderFightCard(f) {
     `;
   }
 
-// Formulario de convocatoria (Envío real)
+  // Formulario Envío
   const fighterForm = document.getElementById('fighterForm');
   const formStatus = document.getElementById('formStatus');
   if (fighterForm) {
@@ -413,13 +408,13 @@ function renderFightCard(f) {
     });
   }
 
-  // ===== MARQUEE PATROCINADORES =====
+  // Marquee Patrocinadores
   const sponsors = [
     { src: 'patrocinadores/bdh.png', alt: 'BDH' },
-    { src: 'patrocinadores/lth.png', alt: 'Patrocinador 2' },
-    { src: 'patrocinadores/lupita.png', alt: 'Patrocinador 3' },
-    { src: 'patrocinadores/perchepop.jpg', alt: 'Patrocinador 4' },
-    { src: 'patrocinadores/santorian.png', alt: 'Patrocinador 5' }
+    { src: 'patrocinadores/lth.png', alt: 'Lth' },
+    { src: 'patrocinadores/lupita.png', alt: 'Lupita' },
+    { src: 'patrocinadores/perchepop.jpg', alt: 'Perchepop' },
+    { src: 'patrocinadores/santorian.png', alt: 'Santorian' }
   ];
 
   const track = document.getElementById('marqueeTrack');
@@ -432,32 +427,33 @@ function renderFightCard(f) {
     `).join('');
   }
 
-  // Año Footer
+  // Año en Footer
   const yearEl = document.getElementById('year');
   if (yearEl) {
-    yearEl.textContent = '© ' + new Date().getFullYear() + ' Peleas Extremmas (PXM). Todos los derechos reservados.';
+    yearEl.textContent = '© ' + new Date().getFullYear() + ' ';
   }
 
+  // Función Filtro de Peleas
   function filterFights(type, btn) {
-  const sections = document.querySelectorAll('.card-section');
-  const buttons = document.querySelectorAll('.btn-filter');
-  
-  buttons.forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+    const sections = document.querySelectorAll('.card-section');
+    const buttons = document.querySelectorAll('.btn-filter');
+    
+    buttons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
 
-  if (type === 'all') {
-    sections.forEach(sec => sec.style.display = 'block');
-  } else if (type === 'main') {
-    sections[0].style.display = 'block';
-    sections[1].style.display = 'none';
-  } else if (type === 'prelim') {
-    sections[0].style.display = 'none';
-    sections[1].style.display = 'block';
+    if (type === 'all') {
+      sections.forEach(sec => sec.style.display = 'block');
+    } else if (type === 'main') {
+      sections[0].style.display = 'block';
+      sections[1].style.display = 'none';
+    } else if (type === 'prelim') {
+      sections[0].style.display = 'none';
+      sections[1].style.display = 'block';
+    }
   }
-}
 </script>
 
-<!-- Botón flotante para comprar boletos en móviles -->
+<!-- Botón flotante móvil -->
 <div class="sticky-cta">
   <a href="https://wa.link/tl5lb6" target="_blank" rel="noopener noreferrer" class="btn btn--primary sticky-cta__btn">
     <span>🎟️ Comprar Boletos — PXM 48</span>
