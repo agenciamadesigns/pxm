@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Meta tags para vista previa al compartir en WhatsApp / Redes -->
+  <meta property="og:title" content="PXM 48 — Peleas Extremmas | Hermosillo">
+  <meta property="og:description" content="15 peleas confirmadas, cinturón de las 135 LB en juego. 15 de Agosto en Hotel Santorian.">
+  <meta property="og:image" content="img/peleaprincipal.png">
+  <meta property="og:type" content="website">
+  <title>PXM — Peleas Extremmas</title>
+  <link rel="icon" type="image/png" href="img/pxm-logo-negro.png">
+  
+  <!-- Preconexión de Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="img/pxm-logo.png" alt="PXM - Peleas Extremmas" width="120" height="34">
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#evento">Próximo Evento</a></li>
+        <li><a href="#cartelera">Cartelera</a></li>
+        <li><a href="rankings.html">Rankings</a></li>
+        <li><a href="#convocatoria">Convocatoria</a></li>
+        <li><a href="#patrocinadores">Patrocinadores</a></li>
+      </ul>
+      <a href="https://wa.link/tl5lb6" class="nav__cta"><span>Boletos</span></a>
+      <button class="nav__burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero" id="evento">
+    <div class="wrap hero__grid">
+      <div>
+        <div class="hero__eyebrow">
+          <span class="dot"></span>
+          <span class="eyebrow">Próximo evento PXM</span>
+        </div>
+        <h1>PXM 48</h1>
+        <p class="hero__sub">La cartelera más dura del año llega con el cinturón de las 135 LB en juego. 15 peleas, una sola jaula, cero excusas.</p>
+        
+        <div class="hero__meta">
+          <div>
+            <div class="label">Fecha</div>
+            <div class="value">15 Ago 2026</div>
+          </div>
+          <div>
+            <div class="label">Sede</div>
+            <div class="value value--sede">
+              <span>Hotel Santorian</span>
+              <a href="https://maps.google.com/?q=Hotel+Santorian+Hermosillo" target="_blank" rel="noopener" class="hero__map-btn">
+                📍 Cómo llegar
+              </a>
+            </div>
+          </div>
+          <div>
+            <div class="label">Ciudad</div>
+            <div class="value">Hermosillo, Son.</div>
+          </div>
+        </div>
+
+        <!-- Mini sección de precios y zonas -->
+        <div class="hero__tickets-info">
+          <div class="ticket-zone">
+            <span class="ticket-zone__name">General</span>
+            <span class="ticket-zone__price">$300 MXN</span>
+          </div>
+        </div>
+        
+        <div class="hero__ctas">
+          <a href="https://wa.link/tl5lb6" class="btn btn--primary"><span>Comprar boletos</span></a>
+          <a href="#cartelera" class="btn btn--ghost"><span>Ver cartelera</span></a>
+        </div>
+      </div>
+
+      <div class="countdown">
+        <div class="countdown__title">La cuenta regresiva ya empezó</div>
+        <div class="countdown__grid" id="countdown">
+          <div class="countdown__unit"><div class="countdown__num" id="cd-days">00</div><div class="countdown__lbl">Días</div></div>
+          <div class="countdown__unit"><div class="countdown__num" id="cd-hours">00</div><div class="countdown__lbl">Horas</div></div>
+          <div class="countdown__unit"><div class="countdown__num" id="cd-mins">00</div><div class="countdown__lbl">Min</div></div>
+          <div class="countdown__unit"><div class="countdown__num" id="cd-secs">00</div><div class="countdown__lbl">Seg</div></div>
+        </div>
+        <div class="countdown__loc"><span class="pin">●</span> Hotel Santorian — 18:00 h</div>
+      </div>
+
+      <div class="hero__poster-side">
+        <img src="img/peleaprincipal.png" alt="PXM 48 Estelar" class="hero__poster-img">
+      </div>
+    </div>
+  </header>
+
+  <div class="slash-divider" aria-hidden="true"></div>
+
+  <!-- ===== CARTELERA ===== -->
+  <section class="section" id="cartelera">
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <span class="eyebrow">Cartelera oficial</span>
+          <h2>PXM 48</h2>
+        </div>
+        <p>15 combates confirmados. La cartelera puede sufrir cambios por lesión o incumplimiento de peso.</p>
+      </div>
+
+      <div class="fight-filters">
+        <button class="btn-filter active" onclick="filterFights('all', this)">Todas (15)</button>
+        <button class="btn-filter" onclick="filterFights('main', this)">Principales (6)</button>
+        <button class="btn-filter" onclick="filterFights('prelim', this)">Preliminares (9)</button>
+      </div>  
+
+      <div id="cardList"></div>
+    </div>
+  </section>
+
+  <div class="slash-divider" aria-hidden="true"></div>
+
+  <!-- ===== CONVOCATORIA ===== -->
+  <section class="section" id="convocatoria">
+    <div class="wrap form-section">
+      <div>
+        <span class="eyebrow">Convocatoria abierta</span>
+        <h2>¿Quieres pelear en PXM?</h2>
+        <p class="form-section__note">Estamos buscando peleadores para próximas carteleras en todas las divisiones. Llena el formulario con tu información y nuestro equipo de matchmaking revisará tu perfil.</p>
+        <ul class="form-section__list">
+          <li><b>01.</b> Recibimos tu solicitud y verificamos tu récord.</li>
+          <li><b>02.</b> Nuestro equipo te contacta para una evaluación.</li>
+          <li><b>03.</b> Si encajas en una cartelera, te llamamos para cerrar el contrato de pelea.</li>
+        </ul>
+      </div>
+
+      <form class="form" id="fighterForm" action="https://formsubmit.co/admisiones@pxm.com" method="POST">
+        <!-- Asunto personalizado que llegará a tu correo -->
+          <input type="hidden" name="_subject" value="🥊 Nueva Solicitud de Peleador - PXM">
+
+          <!-- Evita la redirección a la página de FormSubmit y mantiene al usuario en tu web -->
+          <input type="hidden" name="_next" value="https://tu-sitio-web.com/index.html#convocatoria">
+
+          <!-- Desactiva el CAPTCHA para mayor rapidez -->
+          <input type="hidden" name="_captcha" value="false">
+        <div class="form-row">
+          <div class="field">
+            <label for="f-nombre">Nombre completo</label>
+            <input id="f-nombre" name="nombre" type="text" required>
+          </div>
+          <div class="field">
+            <label for="f-apodo">Apodo (opcional)</label>
+            <input id="f-apodo" name="apodo" type="text">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="f-division">Categoría de peso</label>
+            <select id="f-division" name="division" required>
+              <option value="">Selecciona una división</option>
+              <option value="Peso Pesado">Peso Pesado</option>
+              <option value="Semipesado">Semipesado</option>
+              <option value="Mediano">Mediano</option>
+              <option value="Wélter">Wélter</option>
+              <option value="Ligero">Ligero</option>
+              <option value="Pluma">Pluma</option>
+              <option value="Gallo">Gallo</option>
+              <option value="Mosca">Mosca</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-record">Récord (V-D-E)</label>
+            <input id="f-record" name="record" type="text" placeholder="Ej. 8-2-0" required pattern="^\d+-\d+-\d+$">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="f-ciudad">Ciudad</label>
+            <input id="f-ciudad" name="ciudad" type="text" required>
+          </div>
+          <div class="field">
+            <label for="f-telefono">Teléfono</label>
+            <input id="f-telefono" name="telefono" type="tel" required>
+          </div>
+        </div>
+        <div class="form-row full">
+          <div class="field">
+            <label for="f-video">Enlace a video de peleas / highlights</label>
+            <input id="f-video" name="video" type="url" placeholder="https://">
+          </div>
+        </div>
+        <div class="form-row full">
+          <div class="field">
+            <label for="f-mensaje">Cuéntanos sobre tu experiencia</label>
+            <textarea id="f-mensaje" name="mensaje" required></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn--primary form__submit"><span>Enviar solicitud</span></button>
+        <div class="form__status" id="formStatus" role="alert"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== PATROCINADORES ===== -->
+  <section class="section section--alt" id="patrocinadores" style="padding-bottom:0;">
+    <div class="wrap">
+      <div class="section__head">
+        <div>
+          <span class="eyebrow">Con el respaldo de</span>
+          <h2>Patrocinadores</h2>
+        </div>
+      </div>
+    </div>
+    <div class="marquee">
+      <div class="marquee__track" id="marqueeTrack"></div>
+    </div>
+    <div style="height:80px;"></div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__logo">
+            <img src="img/pxm-logo.png" alt="PXM" width="100" height="32">
+          </div>
+          <p>Peleas Extremmas (PXM) es la promotora de artes marciales mixtas que reúne al mejor talento nacional en una sola jaula.</p>
+        </div>
+        <div>
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="#evento">Próximo evento</a></li>
+            <li><a href="#cartelera">Cartelera</a></li>
+            <li><a href="rankings.html">Rankings</a></li>
+            <li><a href="#convocatoria">Convocatoria</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <ul>
+            <li><a href="mailto:contacto@pxm.mx">contacto@pxm.mx</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">YouTube</a></li>
+            <li><a href="#">TikTok</a></li>
+          </ul>
+        </div>
+      </div>
+<div class="footer__bottom">
+  <div>
+    <span id="year"></span>
+    <span>Peleas Extremmas (PXM) — Todos los derechos reservados.</span>
+  </div>
+
+  <!-- Firma de MA Designs -->
+  <div class="developer-credit">
+    <span>Sitio web desarrollado por</span>
+    <a href="#" target="_blank" rel="noopener" class="developer-credit__link">
+      <img src="img/madesigns-logo.png" alt="MA Designs" class="developer-credit__logo">
+    </a>
+  </div>
+</div>
+    </div>
+  </footer>
+
+<script>
+  // Nav móvil
+  const burgerBtn = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  
+  if (burgerBtn && navLinks) {
+    burgerBtn.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      burgerBtn.setAttribute('aria-expanded', isOpen);
+    });
+    
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        burgerBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Ícono silueta SVG
+  const fighterIcon = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm7 8-4-2-1.5 2L12 8l-1.5 2L9 8l-4 2 2 3-2 7h3l1-5 1.5 1L9 22h3l.8-6 .2.1.2-.1.8 6h3l-1.5-6.9 1.5-1 1 5h3l-2-7z"/></svg>`;
+
+  function avatarHTML(foto, nombre){
+    return foto ? `<img src="${foto}" alt="${nombre}" loading="lazy">` : fighterIcon;
+  }
+
+  // Cuenta regresiva
+  const eventDate = new Date(2026, 7, 15, 18, 0, 0).getTime();
+  function updateCountdown(){
+    const cdDays = document.getElementById('cd-days');
+    if (!cdDays) return;
+
+    const now = Date.now();
+    const diff = Math.max(0, eventDate - now);
+    
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const m = Math.floor((diff / (1000 * 60)) % 60);
+    const s = Math.floor((diff / 1000) % 60);
+    
+    cdDays.textContent = String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+// Función helper para generar el HTML de las banderas en imagen
+function flagHTML(codigo) {
+  if (!codigo) return '';
+  // Utiliza el código ISO de 2 letras en minúsculas (ej. 'mx', 've')
+  return `<img src="https://flagcdn.com/24x18/${codigo.toLowerCase()}.png" alt="${codigo}" class="flag-icon" loading="lazy">`;
+}
+
+// Cartelera con códigos de banderas ('mx', 've', etc.)
+const cartelera = [
+  // --- CARTELERA PRINCIPAL ---
+  {type:'main', main:true, title:true, a:'Bryan "El Zurdo" Martinez', flagA:'mx', recordA:'10-5-0', fotoA:'img/bryanmartinez.jpg', b:'Juan "The Pony" Campos', flagB:'ve', recordB:'10-19-0', fotoB:'img/juancampos.jpg', division:'PELEA POR CINTURON DE LAS 135LB - MMA PROFESIONAL'},
+  {type:'main', coMain:true, a:'Hector "El Ashura" Icedo', flagA:'mx', recordA:'6-2-0', fotoA:'img/hector.jpg', b:'Jorge "El Halcon" Olea', flagB:'mx', recordB:'4-6-0', fotoB:'img/jorge.jpg', division:'MMA PROFESIONAL- PESO PACTADO 162.8LB/74KGS'},
+  {type:'main', a:'Jorge Montes', flagA:'mx', recordA:'1-1-0', fotoA:'img/jorgemontes.jpg', b:'Luis Avila', flagB:'mx', recordB:'DEBUT', fotoB:'img/luisavila.jpg', division:'MMA PROFESIONAL - PESO PACTADO 140LB/63.63KGS'},
+  {type:'main', a:'Omar "El Diablo" Olguin', flagA:'mx', recordA:'2-2-0', fotoA:'img/omarolguin.jpg', b:'Ricardo "Black Tiger" Rueda', flagB:'mx', recordB:'1-3-0', fotoB:'img/ricardorueda.jpg', division:'MMA PROFESIONAL - PESO PACTADO 176LB/80KGS'},
+  {type:'main', a:'Luis Caleb Arzac', flagA:'mx', recordA:'DEBUT', fotoA:'img/luiscalebarzac.jpg', b:'Abel "El Tiburon" Pinela', flagB:'mx', recordB:'0-1-0', fotoB:'img/abelpinela.jpg', division:'MMA PROFESIONAL - 155LB/70KGS'},
+  {type:'main', a:'Manuel "El Puma" Caballero', flagA:'mx', recordA:'DEBUT', fotoA:'img/manuelcaballero.jpg', b:'Sammy Ortiz', flagB:'us', recordB:'1-0-0', fotoB:'img/sammyortiz.jpg', division:'MMA PROFESIONAL -125LB/56.81KGS'},
+
+  // --- PRELIMINARES ---
+  {type:'prelim', main:true, title:true, a:'Luis "Big Luis" Cruz', flagA:'mx', recordA:'3-0-0', fotoA:'img/luiscruz.jpg', b:'Jesus "Ruso" Arias', flagB:'mx', recordB:'1-1-0', fotoB:'img/jesusarias.jpg', division:'ESTELAR - MMA AMATEUR 1ERA FUERZA - 286LB/130KG'},
+  {type:'prelim', coMain:true, a:'Jose Pablo Garcia', flagA:'mx', recordA:'2-2-0', fotoA:'img/josegarcia.jpg', b:'Jose Dominguez', flagB:'mx', recordB:'2-1-0', fotoB:'img/josedominguez.jpg', division:'COESTELAR - MMA AMATEUR 1ERA FUERZA - 185LB/84KG'},
+  {type:'prelim', a:'Angel "El Panda" Quijada', flagA:'mx', recordA:'1-1-0', fotoA:'img/angelquijada.jpg', b:'Carlos "La Bala" Magallon', flagB:'mx', recordB:'DEBUT', fotoB:'img/carlosmagallon.jpg', division:'MMA AMATEUR 1ERA FUERZA - 253LB/115KG'},
+  {type:'prelim', a:'Cris "Lee" Ochoa', flagA:'mx', recordA:'1-2-0', fotoA:'img/crisochoa.jpg', b:'Bryan "El Águila" Hernandez', flagB:'mx', recordB:'1-0-0', fotoB:'img/bryanhernandez.jpg', division:'MMA AMATEUR 1ERA FUERZA - 125LB/56.81KGS'},
+  {type:'prelim', a:'Oscar "El Canguro" Chaidez', flagA:'mx', recordA:'0-1-0', fotoA:'img/oscarchaidez.jpg', b:'Kevin Bustamante', flagB:'mx', recordB:'0-1-0', fotoB:'img/kevinbustamante.jpg', division:'MMA AMATEUR 1ERA FUERZA - 145LB/65.90KGS'},
+  {type:'prelim', a:'Erick Tanori', flagA:'mx', recordA:'1-0-0', fotoA:'img/ericktanori.jpg', b:'Nico Rosenthal', flagB:'us', recordB:'1-1-0', fotoB:'img/nicorosenthal.jpg', division:'MMA AMATEUR 1ERA FUERZA - 125LB/56.81KGS'},
+  {type:'prelim', a:'Fernando Quintero', flagA:'mx', recordA:'1-0-0', fotoA:'img/fernandoquintero.jpg', b:'Gael "El Happy" Rendón', flagB:'mx', recordB:'DEBUT', fotoB:'img/gaelrendon.jpg', division:'MMA AMATEUR 1ERA FUERZA - 155LB/70KGS'},
+  {type:'prelim', a:'Axel Martinez', flagA:'mx', recordA:'1-2-0', fotoA:'img/axelmartinez.jpg', b:'Joel Palacio', flagB:'mx', recordB:'0-1-0', fotoB:'img/joelpalacio.jpg', division:'MMA AMATEUR 1ERA FUERZA - 145LB/65.90KGS'},
+  {type:'prelim', a:'Kevin Cordova', flagA:'mx', recordA:'DEBUT', fotoA:'img/kevincordova.jpg', b:'Oscar Zavala', flagB:'mx', recordB:'DEBUT', fotoB:'img/oscarzavala.jpg', division:'MMA AMATEUR 1ERA FUERZA - 170LB/77.27KGS'}
+];
+
+// Función para generar la tarjeta HTML de cada pelea con la nueva función flagHTML()
+function renderFightCard(f) {
+  return `
+    <div class="card-fight">
+      <div class="card-fight__side">
+        <div class="fighter-avatar">${avatarHTML(f.fotoA, f.a)}</div>
+        <div>
+          <div class="card-fight__name">${flagHTML(f.flagA)} ${f.a}</div>
+          <div class="card-fight__record">${f.recordA || ''}</div>
+        </div>
+      </div>
+      <div class="card-fight__mid">
+        ${f.title ? '<span class="pill pill--gold"><span>Pelea Estelar</span></span>' : (f.main ? '<span class="pill"><span>Estelar</span></span>' : (f.coMain ? '<span class="pill"><span>Co-Estelar</span></span>' : ''))}
+        <div class="card-fight__vs">VS</div>
+        <div class="card-fight__division">${f.division}</div>
+      </div>
+      <div class="card-fight__side card-fight__side--right">
+        <div class="fighter-avatar">${avatarHTML(f.fotoB, f.b)}</div>
+        <div>
+          <div class="card-fight__name">${f.b} ${flagHTML(f.flagB)}</div>
+          <div class="card-fight__record">${f.recordB || ''}</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+  // Separación e inyección en el contenedor
+  const cardList = document.getElementById('cardList');
+  if (cardList) {
+    const mainFights = cartelera.filter(f => f.type === 'main').map(renderFightCard).join('');
+    const prelimFights = cartelera.filter(f => f.type === 'prelim').map(renderFightCard).join('');
+
+    cardList.innerHTML = `
+      <!-- Bloque Cartelera Principal -->
+      <div class="card-section">
+        <div class="card-section__header">
+          <span class="eyebrow">Evento Estelar</span>
+          <h3>Cartelera Principal</h3>
+        </div>
+        <div class="card-section__list">${mainFights}</div>
+      </div>
+
+      <!-- Bloque Preliminares -->
+      <div class="card-section" style="margin-top: 50px;">
+        <div class="card-section__header">
+          <span class="eyebrow">Peleas Iniciales</span>
+          <h3>Cartelera Preliminar</h3>
+        </div>
+        <div class="card-section__list">${prelimFights}</div>
+      </div>
+    `;
+  }
+
+// Formulario de convocatoria (Envío real)
+  const fighterForm = document.getElementById('fighterForm');
+  const formStatus = document.getElementById('formStatus');
+  if (fighterForm) {
+    fighterForm.addEventListener('submit', function() {
+      if (formStatus) {
+        formStatus.textContent = 'Enviando solicitud...';
+        formStatus.className = 'form__status show ok';
+      }
+    });
+  }
+
+  // ===== MARQUEE PATROCINADORES =====
+  const sponsors = [
+    { src: 'patrocinadores/bdh.png', alt: 'BDH' },
+    { src: 'patrocinadores/lth.png', alt: 'Patrocinador 2' },
+    { src: 'patrocinadores/lupita.png', alt: 'Patrocinador 3' },
+    { src: 'patrocinadores/perchepop.jpg', alt: 'Patrocinador 4' },
+    { src: 'patrocinadores/santorian.png', alt: 'Patrocinador 5' }
+  ];
+
+  const track = document.getElementById('marqueeTrack');
+  if (track) {
+    const doubled = [...sponsors, ...sponsors];
+    track.innerHTML = doubled.map(s => `
+      <div class="sponsor-plate">
+        <img src="${s.src}" alt="${s.alt}" loading="lazy">
+      </div>
+    `).join('');
+  }
+
+  // Año Footer
+  const yearEl = document.getElementById('year');
+  if (yearEl) {
+    yearEl.textContent = '© ' + new Date().getFullYear() + ' Peleas Extremmas (PXM). Todos los derechos reservados.';
+  }
+
+  function filterFights(type, btn) {
+  const sections = document.querySelectorAll('.card-section');
+  const buttons = document.querySelectorAll('.btn-filter');
+  
+  buttons.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  if (type === 'all') {
+    sections.forEach(sec => sec.style.display = 'block');
+  } else if (type === 'main') {
+    sections[0].style.display = 'block';
+    sections[1].style.display = 'none';
+  } else if (type === 'prelim') {
+    sections[0].style.display = 'none';
+    sections[1].style.display = 'block';
+  }
+}
+</script>
+
+<!-- Botón flotante para comprar boletos en móviles -->
+<div class="sticky-cta">
+  <a href="https://wa.link/tl5lb6" class="btn btn--primary sticky-cta__btn">
+    <span>🎟️ Comprar Boletos — PXM 48</span>
+  </a>
+</div>
+</body>
+</html>
