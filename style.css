@@ -126,7 +126,27 @@ h1,h2,h3,.display{
              linear-gradient(100deg, transparent 55%, rgba(255,255,255,0.03) 56%, rgba(255,255,255,0.03) 58%, transparent 59%);
   pointer-events:none;
 }
-.hero__grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:48px;align-items:center;}
+/* Reorganización de columnas */
+.hero__grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:48px;
+  align-items:start;
+}
+@media (min-width: 901px) {
+  .hero__grid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+}
+.hero__right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.hero__left .countdown {
+  margin-top: 36px;
+}
+
 .hero__eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
 .hero__eyebrow .dot{width:8px;height:8px;background:var(--red);border-radius:50%;animation:pulse 1.6s infinite;}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.25;}}

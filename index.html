@@ -40,51 +40,54 @@
     </div>
   </nav>
 
-  <!-- ===== HERO ===== -->
-  <header class="hero" id="evento">
-    <div class="wrap hero__grid">
-      <div>
-        <div class="hero__eyebrow">
-          <span class="dot"></span>
-          <span class="eyebrow">Próximo evento PXM</span>
+<!-- ===== HERO ===== -->
+<header class="hero" id="evento">
+  <div class="wrap hero__grid">
+    
+    <!-- COLUMNA IZQUIERDA: Texto, Meta, Precios, Botones y Contador -->
+    <div class="hero__left">
+      <div class="hero__eyebrow">
+        <span class="dot"></span>
+        <span class="eyebrow">Próximo evento PXM</span>
+      </div>
+      <h1>PXM 48</h1>
+      <p class="hero__sub">La cartelera más dura del año llega con el cinturón de las 135 LB en juego. 15 peleas, una sola jaula, cero excusas.</p>
+      
+      <div class="hero__meta">
+        <div>
+          <div class="label">Fecha</div>
+          <div class="value">15 Ago 2026</div>
         </div>
-        <h1>PXM 48</h1>
-        <p class="hero__sub">La cartelera más dura del año llega con el cinturón de las 135 LB en juego. 15 peleas, una sola jaula, cero excusas.</p>
-        
-        <div class="hero__meta">
-          <div>
-            <div class="label">Fecha</div>
-            <div class="value">15 Ago 2026</div>
-          </div>
-          <div>
-            <div class="label">Sede</div>
-            <div class="value value--sede">
-              <span>Hotel Santorian</span>
-              <a href="https://maps.google.com/?q=Hotel+Santorian+Hermosillo" target="_blank" rel="noopener noreferrer" class="hero__map-btn">
-                📍 Cómo llegar
-              </a>
-            </div>
-          </div>
-          <div>
-            <div class="label">Ciudad</div>
-            <div class="value">Hermosillo, Son.</div>
+        <div>
+          <div class="label">Sede</div>
+          <div class="value value--sede">
+            <span>Hotel Santorian</span>
+            <a href="https://maps.google.com/?q=Hotel+Santorian+Hermosillo" target="_blank" rel="noopener noreferrer" class="hero__map-btn">
+              📍 Cómo llegar
+            </a>
           </div>
         </div>
-
-        <!-- Mini sección de precios y zonas -->
-        <div class="hero__tickets-info">
-          <div class="ticket-zone">
-            <span class="ticket-zone__name">General</span>
-            <span class="ticket-zone__price">$300 MXN</span>
-          </div>
-        </div>
-        
-        <div class="hero__ctas">
-          <a href="https://wa.link/tl5lb6" target="_blank" rel="noopener noreferrer" class="btn btn--primary"><span>Comprar boletos</span></a>
-          <a href="#cartelera" class="btn btn--ghost"><span>Ver cartelera</span></a>
+        <div>
+          <div class="label">Ciudad</div>
+          <div class="value">Hermosillo, Son.</div>
         </div>
       </div>
 
+      <!-- Mini sección de precios y zonas -->
+      <div class="hero__tickets-info">
+        <div class="ticket-zone">
+          <span class="ticket-zone__name">General</span>
+          <span class="ticket-zone__price">$300 MXN</span>
+        </div>
+      </div>
+      
+      <div class="hero__ctas">
+        <a href="https://wa.link/tl5lb6" target="_blank" rel="noopener noreferrer" class="btn btn--primary"><span>Comprar boletos</span></a>
+        <a href="#cartelera" class="btn btn--ghost"><span>Ver cartelera</span></a>
+        <a href="https://peleas-extremas-fights.inowu.store/" target="_blank" class="btn btn--ghost"><span>Comprar PPV</span></a>
+      </div>
+
+      <!-- Contador colocado debajo de la info en PC -->
       <div class="countdown">
         <div class="countdown__title">La cuenta regresiva ya empezó</div>
         <div class="countdown__grid" id="countdown">
@@ -95,12 +98,20 @@
         </div>
         <div class="countdown__loc"><span class="pin">●</span> Hotel Santorian — 18:00 h</div>
       </div>
+    </div>
 
+    <!-- COLUMNA DERECHA: Fotos una debajo de otra -->
+    <div class="hero__right">
       <div class="hero__poster-side">
         <img src="img/peleaprincipal.png" alt="PXM 48 Estelar" class="hero__poster-img">
       </div>
+      <div class="hero__poster-side">
+        <img src="img/calendario.jpeg" alt="PXM 48 Calendario" class="hero__poster-img">
+      </div>
     </div>
-  </header>
+
+  </div>
+</header>
 
   <div class="slash-divider" aria-hidden="true"></div>
 
