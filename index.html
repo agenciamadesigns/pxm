@@ -137,19 +137,11 @@
       <div class="promo-videos__viewer">
         <div class="reel-frame">
           <div class="reel-badge"><span>🔥 Exclusivo PXM</span></div>
-          
+
+          <!-- UN SOLO REPRODUCTOR NATIVO -->
           <div class="reel-container" id="reelContainer">
-            <!-- Los videos se inyectan o controlan vía JavaScript -->
             <video id="activeReel" class="reel-video" controls playsinline preload="metadata">
               <source src="img/pxm1.mp4" type="video/mp4">
-              Tu navegador no soporta reproducción de video.
-            </video>
-          </div>
-
-          <div class="reel-container" id="reelContainer">
-            <!-- Los videos se inyectan o controlan vía JavaScript -->
-            <video id="activeReel" class="reel-video" controls playsinline preload="metadata">
-              <source src="img/pxmpromo.mp4" type="video/mp4">
               Tu navegador no soporta reproducción de video.
             </video>
           </div>
@@ -629,7 +621,17 @@
     'patrocinadores/meipsa.png',
     'patrocinadores/elcochito.png',
     'patrocinadores/chats.png',
-    'patrocinadores/idh.png'
+    'patrocinadores/idh.png',
+    'patrocinadores/mrsmoking.png',
+    'patrocinadores/fabricadeprotesis.png',
+    'patrocinadores/panaderia.png',
+    'patrocinadores/toyota.png',
+    'patrocinadores/puntologistico.png',
+    'patrocinadores/orodelnoro.png',
+    'patrocinadores/built.png',
+    'patrocinadores/cocina.png',
+    'patrocinadores/lavozdelpitic.png',
+    'patrocinadores/elimparcial.png'
   ];
 
   let currentSponsorIndex = 0;
@@ -666,14 +668,14 @@
 </script>
 
 <script>
-// ===== SLIDER INTERACTIVO DE VIDEOS PROMOCIONALES =====
+// ===== SLIDER DE VIDEOS LOCALES COMPRIMIDOS =====
   const promoList = [
     {
       src: 'img/pxm1.mp4',
       caption: 'Promo Oficial — PXM 48'
     },
     {
-      src: 'img/pxm2.mp4',
+      src: 'img/pxmpromo.mp4',   /* <--- Pon aquí el nombre exacto de tu segundo video comprimido */
       caption: 'Careos Oficiales & Pesajes'
     }
   ];
@@ -686,7 +688,7 @@
   const promoDotsContainer = document.getElementById('promoDots');
 
   if (activeVideo && promoDotsContainer && promoList.length > 0) {
-    // Generar puntos
+    // Generar puntos de navegación
     promoDotsContainer.innerHTML = promoList.map((_, i) => 
       `<span class="promo-dot ${i === 0 ? 'active' : ''}"></span>`
     ).join('');
@@ -698,21 +700,22 @@
       
       setTimeout(() => {
         currentVideoIndex = index;
+        
+        // Cambiar la fuente del video
         activeVideo.src = promoList[currentVideoIndex].src;
         
         if (reelCaption) {
           reelCaption.textContent = promoList[currentVideoIndex].caption;
         }
 
-        // Aseguramos que conserve los controles de audio visibles
-        activeVideo.muted = false;
+        // Cargar y actualizar
+        activeVideo.load();
 
-        // Actualizar puntos
+        // Actualizar estados de puntos
         dots.forEach((dot, idx) => dot.classList.toggle('active', idx === currentVideoIndex));
 
         activeVideo.style.opacity = '1';
-        activeVideo.load();
-      }, 250);
+      }, 200);
     }
 
     // Botones Siguiente / Anterior
