@@ -113,7 +113,56 @@
   </div>
 </header>
 
-<div class="slash-divider" aria-hidden="true"></div>
+<!-- ===== SECCIÓN DE VIDEOS PROMOCIONALES (REELS/SHORTS) ===== -->
+  <section class="section section--alt" id="promos">
+    <div class="wrap promo-videos__grid">
+      
+      <!-- LADO IZQUIERDO: Encabezado y Descripción -->
+      <div class="promo-videos__info">
+        <span class="eyebrow">PXM en Acción</span>
+        <h2>Videos Promocionales</h2>
+        <p class="promo-videos__desc">
+          Revive los mejores momentos, careos oficiales y promos exclusivas del evento directamente desde la jaula.
+        </p>
+
+        <!-- Controles para navegar entre videos -->
+        <div class="promo-slider__controls">
+          <button class="promo-btn promo-btn--prev" id="promoPrev" aria-label="Video anterior">❮</button>
+          <div class="promo-slider__dots" id="promoDots"></div>
+          <button class="promo-btn promo-btn--next" id="promoNext" aria-label="Siguiente video">❯</button>
+        </div>
+      </div>
+
+      <!-- LADO DERECHO: Marco Vertical Tipo Redes Sociales -->
+      <div class="promo-videos__viewer">
+        <div class="reel-frame">
+          <div class="reel-badge"><span>🔥 Exclusivo PXM</span></div>
+          
+          <div class="reel-container" id="reelContainer">
+            <!-- Los videos se inyectan o controlan vía JavaScript -->
+            <video id="activeReel" class="reel-video" controls playsinline preload="metadata">
+              <source src="img/pxm1.mp4" type="video/mp4">
+              Tu navegador no soporta reproducción de video.
+            </video>
+          </div>
+
+          <div class="reel-container" id="reelContainer">
+            <!-- Los videos se inyectan o controlan vía JavaScript -->
+            <video id="activeReel" class="reel-video" controls playsinline preload="metadata">
+              <source src="img/pxmpromo.mp4" type="video/mp4">
+              Tu navegador no soporta reproducción de video.
+            </video>
+          </div>
+
+          <!-- Título del video actual -->
+          <div class="reel-caption" id="reelCaption">Promo Oficial PXM 48</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+<div class="gold-divider" aria-hidden="true"></div>
 
   <!-- ===== CALENDARIO DE EVENTOS PRÓXIMOS ===== -->
   <section class="section section--alt" id="calendario">
@@ -176,7 +225,43 @@
     </div>
   </section>
 
-  <div class="slash-divider" aria-hidden="true"></div>
+  <div class="gold-divider" aria-hidden="true"></div>
+
+  <!-- ===== SECCIÓN DE INVITACIÓN A PATROCINADORES ===== -->
+  <section class="section sponsor-cta-section" id="patrocinio">
+    <div class="wrap sponsor-cta__grid">
+      
+      <!-- LADO IZQUIERDO: Mensaje Elegante e Invitación -->
+      <div class="sponsor-cta__content">
+        <span class="eyebrow eyebrow--gold">Oportunidad de Alianza</span>
+        <h2>¿Quieres patrocinar en PXM?</h2>
+        <p class="sponsor-cta__text">
+          Posiciona tu marca ante miles de aficionados de las artes marciales mixtas. Sé parte de la experiencia en jaula, transmisiones PPV y presencia oficial en medios.
+        </p>
+        <div class="sponsor-cta__action">
+          <a href="https://wa.link/tl5lb6" target="_blank" rel="noopener noreferrer" class="btn btn--gold">
+            <span>Sé Patrocinador Oficial</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- LADO DERECHO: Cuadro Elegante con Carrusel Automático (Fade) -->
+      <div class="sponsor-cta__showcase">
+        <div class="sponsor-cta__card">
+          <span class="sponsor-cta__card-tag">Aliados PXM</span>
+          
+          <div class="sponsor-slider">
+            <img id="sponsorSliderImg" src="patrocinadores/bdh.png" alt="Patrocinador PXM" class="sponsor-slider__img">
+          </div>
+
+          <div class="sponsor-slider__dots" id="sponsorDots"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="gold-divider" aria-hidden="true"></div>
 
   <!-- ===== CARTELERA ===== -->
   <section class="section" id="cartelera">
@@ -199,7 +284,7 @@
     </div>
   </section>
 
-  <div class="slash-divider" aria-hidden="true"></div>
+  <div class="gold-divider" aria-hidden="true"></div>
 
   <!-- ===== CONVOCATORIA ===== -->
   <section class="section" id="convocatoria">
@@ -529,6 +614,123 @@
       sections[0].style.display = 'none';
       sections[1].style.display = 'block';
     }
+  }
+</script>
+
+<script>
+  // ===== CARRUSEL AUTOMÁTICO DE PATROCINADORES (Caja Elegante) =====
+  const sponsorList = [
+    'patrocinadores/bdh.png',
+    'patrocinadores/lth.png',
+    'patrocinadores/lupita.png',
+    'patrocinadores/perchepop.jpg',
+    'patrocinadores/santorian.png',
+    'patrocinadores/armando.png',
+    'patrocinadores/meipsa.png',
+    'patrocinadores/elcochito.png',
+    'patrocinadores/chats.png',
+    'patrocinadores/idh.png'
+  ];
+
+  let currentSponsorIndex = 0;
+  const sliderImg = document.getElementById('sponsorSliderImg');
+  const dotsContainer = document.getElementById('sponsorDots');
+
+  if (sliderImg && dotsContainer && sponsorList.length > 0) {
+    // Generar puntos de navegación
+    dotsContainer.innerHTML = sponsorList.map((_, i) => 
+      `<span class="dot-item ${i === 0 ? 'active' : ''}"></span>`
+    ).join('');
+
+    const dots = dotsContainer.querySelectorAll('.dot-item');
+
+    setInterval(() => {
+      // Efecto Fade Out
+      sliderImg.style.opacity = '0';
+      sliderImg.style.transform = 'scale(0.9)';
+
+      setTimeout(() => {
+        currentSponsorIndex = (currentSponsorIndex + 1) % sponsorList.length;
+        sliderImg.src = sponsorList[currentSponsorIndex];
+
+        // Actualizar puntos
+        dots.forEach((d, idx) => d.classList.toggle('active', idx === currentSponsorIndex));
+
+        // Efecto Fade In
+        sliderImg.style.opacity = '1';
+        sliderImg.style.transform = 'scale(1)';
+      }, 400);
+
+    }, 3000); // Cambia cada 3 segundos
+  }
+</script>
+
+<script>
+// ===== SLIDER INTERACTIVO DE VIDEOS PROMOCIONALES =====
+  const promoList = [
+    {
+      src: 'img/pxm1.mp4',
+      caption: 'Promo Oficial — PXM 48'
+    },
+    {
+      src: 'img/pxm2.mp4',
+      caption: 'Careos Oficiales & Pesajes'
+    }
+  ];
+
+  let currentVideoIndex = 0;
+  const activeVideo = document.getElementById('activeReel');
+  const reelCaption = document.getElementById('reelCaption');
+  const promoPrevBtn = document.getElementById('promoPrev');
+  const promoNextBtn = document.getElementById('promoNext');
+  const promoDotsContainer = document.getElementById('promoDots');
+
+  if (activeVideo && promoDotsContainer && promoList.length > 0) {
+    // Generar puntos
+    promoDotsContainer.innerHTML = promoList.map((_, i) => 
+      `<span class="promo-dot ${i === 0 ? 'active' : ''}"></span>`
+    ).join('');
+
+    const dots = promoDotsContainer.querySelectorAll('.promo-dot');
+
+    function updateVideo(index) {
+      activeVideo.style.opacity = '0';
+      
+      setTimeout(() => {
+        currentVideoIndex = index;
+        activeVideo.src = promoList[currentVideoIndex].src;
+        
+        if (reelCaption) {
+          reelCaption.textContent = promoList[currentVideoIndex].caption;
+        }
+
+        // Aseguramos que conserve los controles de audio visibles
+        activeVideo.muted = false;
+
+        // Actualizar puntos
+        dots.forEach((dot, idx) => dot.classList.toggle('active', idx === currentVideoIndex));
+
+        activeVideo.style.opacity = '1';
+        activeVideo.load();
+      }, 250);
+    }
+
+    // Botones Siguiente / Anterior
+    promoNextBtn.addEventListener('click', () => {
+      let newIndex = (currentVideoIndex + 1) % promoList.length;
+      updateVideo(newIndex);
+    });
+
+    promoPrevBtn.addEventListener('click', () => {
+      let newIndex = (currentVideoIndex - 1 + promoList.length) % promoList.length;
+      updateVideo(newIndex);
+    });
+
+    // Puntos
+    dots.forEach((dot, idx) => {
+      dot.style.cursor = 'pointer';
+      dot.addEventListener('click', () => updateVideo(idx));
+    });
   }
 </script>
 
