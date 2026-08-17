@@ -465,7 +465,6 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
-  // Helper para Banderas PNG
   function flagHTML(codigo) {
     if (!codigo) return '';
     return `<img src="https://flagcdn.com/24x18/${codigo.toLowerCase()}.png" alt="${codigo}" class="flag-icon" loading="lazy">`;
@@ -492,7 +491,6 @@
     {type:'prelim', a:'Kevin Cordova', flagA:'mx', recordA:'DEBUT', fotoA:'img/kevincordova.jpg', b:'Oscar Zavala', flagB:'mx', recordB:'DEBUT', fotoB:'img/oscarzavala.jpg', division:'MMA AMATEUR 1ERA FUERZA - 170LB/77.27KGS'}
   ];
 
-  // Generador de Tarjeta con Cinturón
   function renderFightCard(f) {
     return `
       <div class="card-fight ${f.title ? 'card-fight--title' : ''}">
